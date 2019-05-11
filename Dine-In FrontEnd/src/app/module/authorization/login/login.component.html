@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12">
+      <div class="container">
+        <div class="card card-container">
+          <img id="profile-img" class="profile-img-card" src="assets/images/avatar.jpg" />
+          <form #loginForm="ngForm" class="form-signin" (ngSubmit)="onFormSubmit(loginForm)">
+
+            <input class="form-control" Id = "email" name="email" email [(ngModel)]="user.email" [class.is-invalid]="uname.invalid && uname.touched" 
+            placeholder="Username" required #uname="ngModel">
+            <div *ngIf="uname.errors && (uname.invalid || uname.touched)">
+              <small class="text-danger" *ngIf="uname.errors.email"> Enter a valid Email </small>
+              <small class="text-danger" *ngIf="uname.errors.required && uname.touched"> Email is required </small>
+            </div>
+            <br>
+        <input type="password" Id = "password" class="form-control" [class.is-invalid]="password.invalid && password.touched" name="password" [(ngModel)]="user.password" placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$"
+          #password="ngModel">
+          <div *ngIf="password.errors && (password.invalid || password.touched)">
+            <small class="text-danger" *ngIf="password.errors.pattern"> Enter a valid password </small>
+            <small class="text-danger" *ngIf="password.errors.required && password.touched"> password is required </small>
+          </div>
+      <div id="remember" class="checkbox">
+        <label class="text-white">
+                        <input type="checkbox" name="subscribe" ngModel value="remember-me"> Remember me
+                    </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block btn-signin" Id = "loginButton" [disabled]="loginForm.invalid">Sign in</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>
+<h3 align="center">Create new account</h3>
+<a routerLink='/register'>
+  <div class="col-lg-12 col-sm-12 col-md-12">
+      <div class="container">
+        <div class="card card-container">
+            <h3 align="center" class="text-white">Signup</h3>
+        </div>
+      </div>
+</div></a>
+</div>

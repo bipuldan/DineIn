@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="card top-buffer" style="width: 60rem;">
+    <div class="card-body text-center">
+      <h5 class="card-title" align="center">Orders</h5>
+      <br>
+    </div>
+    <div class="container mt-auto">
+      <form action="">
+        <div class="row" *ngFor="let cart of cartItem; index as i">
+
+          <div class="col-lg-4 col-sm-12" align="center">
+            <h6>{{cart.name}}</h6>
+          </div>
+          <div class="col-lg-4 col-sm-12" align="center">
+            <h6>Rs {{cart.price*cart.quantity}}</h6>
+          </div>
+          <div class="col-lg-4 col-sm-12" align="center">
+            
+            <form class="form-inline">
+                <div class="col-lg-6 col-sm-12">
+              <div inc-buttons>
+                  <button inc="-" (click)="decrease(cart.quantity,cart.cartId)">-</button>
+                <input type=text [(ngModel)]="cart.quantity" min="1" max="5" size="1"
+                 name="item{{cart.quantity}}" inc-button><button inc="+" (click)="increase(cart.quantity,cart.cartId)">+</button>  
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <button class="btn btn-danger" (click)="remove(i)">Remove</button>
+                </div>
+            </form>
+          </div>
+          <br><br>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-lg-4 col-sm-12 mt-auto" align="center">
+            <h6>Amount</h6>
+          </div>
+          <div class="col-lg-4 col-sm-12 mt-auto" align="center">
+            <h6>Rs {{cartCost}}</h6>
+          </div>
+          <div class="col-lg-4 col-sm-12 mt-auto" align="left">
+            <button type="submit" class="btn btn-outline-success" (click)="proceed()">Proceed</button>
+          </div>
+        </div>
+        <br>
+      </form>
+    </div>
+  </div>
+</div>

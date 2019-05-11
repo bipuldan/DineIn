@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-6 col-sm-12 top-buffer" *ngFor="let Item of foodList" align="center">
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top cardimage" src="assets/images/{{Item.imageUrl}}" alt="Card image cap">
+        <div class="card-body text-center">
+          <h5 class="card-title" align="center">{{Item.name}}</h5>
+          <form class="orderForm" method="GET" (ngSubmit)="onOrderClick(Item.itemId, Item.quantity)">
+            <div class="row form-group" align="center">
+                <div class="col-md-12 col-sm-12 mt-auto" align="center">
+                    <label>({{(Item.quantity)}} pcs)</label>
+                  </div>
+            </div>
+            <div class="row form-group" align="center">
+              <div class="col-md-4 col-sm-12 mt-auto" align="center">
+                <label>{{Item.price}} Rs/-</label>
+              </div>
+               <div class="col-md-4 col-sm-12 mt-auto" align="center">
+                  <input type="number" min="1" max="{{Item.quantity}}" [(ngModel)]="itemQuantity[Item.itemId]" name="item{{Item.itemId}}"/>
+              </div>
+              <div class="col-md-4 col-sm-12 mt-auto" align="center">
+                <button class="btn btn-primary">Order</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

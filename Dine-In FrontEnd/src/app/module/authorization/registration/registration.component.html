@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-sm-12 col-md-12">
+      <div *ngIf="alert" class="alert alert-primary text-danger" role="alert" align="center">
+        {{message}}
+      </div>
+      <div class="container">
+        <div class="card card-container">
+          <form #registerationForm="ngForm" class="register-form" (ngSubmit)="submitRegisterationForm(registerationForm)">
+
+            <input class="form-control" name="firstname" [(ngModel)]="newUser.firstname" [class.is-invalid]="fname.invalid && fname.touched"
+              placeholder="First Name" required #fname="ngModel">
+              <div *ngIf="fname.errors && (fname.invalid || fname.touched)">
+                <small class="text-danger" *ngIf="fname.errors.required && fname.touched"> First Name is required </small>
+              </div><br>
+
+              <input class="form-control" name="lastname" [(ngModel)]="newUser.lastname" [class.is-invalid]="lname.invalid && lname.touched"
+                placeholder="Last Name" required #lname="ngModel">
+                <div *ngIf="lname.errors && (lname.invalid || lname.touched)">
+                  <small class="text-danger" *ngIf="lname.errors.required && lname.touched"> Last Name is required </small>
+                </div><br>
+
+                <input class="form-control" name="dob" [(ngModel)]="newUser.dob" [class.is-invalid]="dob.invalid && dob.touched" placeholder="DOB"
+                  required #dob="ngModel">
+                  <div *ngIf="dob.errors && (dob.invalid || dob.touched)">
+                    <small class="text-danger" *ngIf="dob.errors.required && dob.touched"> DOB is required </small>
+                  </div><br>
+
+                  <input class="form-control" name="city" [(ngModel)]="newUser.city" [class.is-invalid]="city.invalid && city.touched" placeholder="City"
+                    required #city="ngModel">
+                    <div *ngIf="city.errors && (city.invalid || city.touched)">
+                      <small class="text-danger" *ngIf="city.errors.required && city.touched"> City is required </small>
+                    </div><br>
+
+                    <input class="form-control" name="phone" [(ngModel)]="newUser.phone" [class.is-invalid]="phone.invalid && phone.touched"
+                      placeholder="Mobile No" required pattern="^\d{10}$" #phone="ngModel">
+                      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+                        <small class="text-danger" *ngIf="phone.errors.pattern"> Enter a valid Mobile No </small>
+                        <small class="text-danger" *ngIf="phone.errors.required && phone.touched"> Mobile No is required </small>
+                      </div><br>
+
+                      <input class="form-control" name="zipcode" [(ngModel)]="newUser.zipcode" [class.is-invalid]="zip.invalid && zip.touched"
+                        placeholder="Zip code" pattern="^\d{6}$" required #zip="ngModel">
+                        <div *ngIf="zip.errors && (zip.invalid || zip.touched)">
+                          <small class="text-danger" *ngIf="zip.errors.pattern"> Enter a valid Zip Code </small>
+                          <small class="text-danger" *ngIf="zip.errors.required && zip.touched"> Zip Code is required </small>
+                        </div><br>
+
+                        <input class="form-control" name="email" email [(ngModel)]="newUser.email" [class.is-invalid]="email.invalid && email.touched"
+                          placeholder="Email Id" required #email="ngModel">
+                          <div *ngIf="email.errors && (email.invalid || email.touched)">
+                            <small class="text-danger" *ngIf="email.errors.email"> Enter a valid Email </small>
+                            <small class="text-danger" *ngIf="email.errors.required && email.touched"> Email is required </small>
+                          </div><br>
+
+                          <input type="password" class="form-control" [class.is-invalid]="password.invalid && password.touched" name="password" [(ngModel)]="newUser.password"
+                            placeholder="Password" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{4,}$"
+                            #password="ngModel">
+                            <div *ngIf="password.errors && (password.invalid || password.touched)">
+                              <small class="text-danger" *ngIf="password.errors.pattern"> Enter a valid password </small>
+                              <small class="text-danger" *ngIf="password.errors.required && password.touched"> password is required </small>
+                            </div>
+                            <br>
+
+                            <button class="btn btn-lg btn-primary btn-block btn-signin">Register</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

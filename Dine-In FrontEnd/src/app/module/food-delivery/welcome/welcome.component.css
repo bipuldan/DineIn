@@ -1,0 +1,10 @@
+.top-buffer{
+margin-top : 2rem;
+}
+
+.cardimage{
+width:100%;
+height:220px;
+object-fit:cover;
+margin-bottom:20px;
+}
